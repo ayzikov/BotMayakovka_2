@@ -2,7 +2,7 @@
 from BotMayakovka_2.Bot.keyboards.second_lvl_keyboards import walk_keyboard, about_project_keyboard
 
 # импорты aiogram
-from aiogram.filters import Command, Text
+from aiogram.filters import Text
 from aiogram.types import Message
 from aiogram import Router
 
