@@ -13,6 +13,7 @@ router = Router()
 
 # обработка кнопки 'Прогуляться по городу'
 @router.message(Text(text='Прогуляться по городу'))
+@router.message(Text(text='Назад'))
 async def walk_handler(message: Message):
     # получам клавиатуру
     markup = await walk_keyboard()
