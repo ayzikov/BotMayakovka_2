@@ -2,8 +2,8 @@
 
 
 # импорты aiogram
-from aiogram.types import KeyboardButton, InlineKeyboardButton
-from aiogram.utils.keyboard import ReplyKeyboardMarkup, InlineKeyboardBuilder, InlineKeyboardMarkup
+from aiogram.types import KeyboardButton
+from aiogram.utils.keyboard import ReplyKeyboardMarkup
 
 
 
@@ -15,9 +15,7 @@ async def main_menu_keyboard():
     markup = ReplyKeyboardMarkup(
         keyboard=[
             [KeyboardButton(text='Прогуляться по городу'),
-            KeyboardButton(text='О проекте')],
-
-            [KeyboardButton(text='Главное меню')]
+            KeyboardButton(text='О проекте')]
         ],
         resize_keyboard=True)
 

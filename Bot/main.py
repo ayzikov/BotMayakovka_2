@@ -1,5 +1,5 @@
 # файлы проекта
-from handlers import comands_handler
+from handlers import comands_handler, main_menu_handler, navigation_handler, location_handler
 
 # отдельные импорты
 import logging
@@ -29,6 +29,9 @@ dp = Dispatcher(storage=storage)
 
 # регестрируем роутеры в боте
 dp.include_router(comands_handler.router)
+dp.include_router(main_menu_handler.router)
+dp.include_router(navigation_handler.router)
+dp.include_router(location_handler.router)
 
 # вывод логов в консоль
 logging.basicConfig(level=logging.INFO)
