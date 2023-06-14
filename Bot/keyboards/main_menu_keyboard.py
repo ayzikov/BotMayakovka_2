@@ -2,8 +2,8 @@
 
 
 # импорты aiogram
-from aiogram.types import KeyboardButton, InlineKeyboardButton
-from aiogram.utils.keyboard import ReplyKeyboardMarkup, InlineKeyboardBuilder, InlineKeyboardMarkup
+from aiogram.types import KeyboardButton
+from aiogram.utils.keyboard import ReplyKeyboardMarkup
 
 
 

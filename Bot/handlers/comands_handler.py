@@ -2,7 +2,7 @@
 from BotMayakovka_2.Bot.keyboards.main_menu_keyboard import main_menu_keyboard
 
 # импорты aiogram
-from aiogram.filters import Command
+from aiogram.filters import Command, Text
 from aiogram.types import Message
 from aiogram import Router
 
@@ -20,8 +20,10 @@ async def welcome_handler(message: Message):
     await message.answer(text='Приветствие', reply_markup=markup)
 
 
-# обработка команды /menu
+# обработка команды /menu ,кнопок 'Главное меню' и 'Завершить прогулку'
 @router.message(Command(commands=['menu']))
+@router.message(Text(text='Главное меню'))
+@router.message(Text(text='Завершить прогулку'))
 async def main_menu_handler(message: Message):
     # получам клавиатуру
     markup = await main_menu_keyboard()
