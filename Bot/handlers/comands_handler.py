@@ -13,8 +13,17 @@ router = Router()
 
 # обработка команды /start
 @router.message(Command(commands=['start']))
-async def hello(message: Message):
+async def welcome_handler(message: Message):
     # получам клавиатуру
     markup = await main_menu_keyboard()
 
     await message.answer(text='Приветствие', reply_markup=markup)
+
+
+# обработка команды /menu
+@router.message(Command(commands=['menu']))
+async def main_menu_handler(message: Message):
+    # получам клавиатуру
+    markup = await main_menu_keyboard()
+
+    await message.answer(text='Главное меню', reply_markup=markup)
