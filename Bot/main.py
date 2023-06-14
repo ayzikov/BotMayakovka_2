@@ -1,4 +1,5 @@
 # файлы проекта
+from handlers import comands_handler
 
 # отдельные импорты
 import logging
@@ -9,8 +10,6 @@ from dotenv import load_dotenv
 # импорты aiogram
 from aiogram.dispatcher.dispatcher import Dispatcher
 from aiogram import Bot
-from aiogram.filters import Command, Text
-from aiogram.types import Message
 from aiogram.fsm.storage.memory import MemoryStorage
 
 
@@ -28,14 +27,12 @@ storage = MemoryStorage()
 bot = Bot(token)
 dp = Dispatcher(storage=storage)
 
+# регестрируем роутеры в боте
+dp.include_router(comands_handler.router)
+
 # вывод логов в консоль
 logging.basicConfig(level=logging.INFO)
 
-
-# тестовый хендлер
-@dp.message(Command(commands=['start']))
-async def hello(message: Message):
-    await message.answer(text='Приветствие')
 
 
 # запускаем пулинг бота
