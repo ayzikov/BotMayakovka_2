@@ -24,7 +24,7 @@ class LocationView(APIView):
         # преобразование входящих данных
         location_number = get_dict_from_json(val='location_number', request=request)
 
-        # получение объекта локации из БД
+        # получение объекта локации из БД по ее номеру
         location_info = Location.objects.get(location_number=location_number)
 
         # отправка JSON
@@ -37,7 +37,7 @@ class ImagesView(APIView):
         # преобразование входящих данных
         location_number = get_dict_from_json(val='location_number', request=request)
 
-        # получение объектов изображений из БД
+        # получение объектов изображений из БД по номеру локации
         images_info = Image.objects.filter(location_number=location_number)
 
         # отправка JSON
