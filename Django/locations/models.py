@@ -47,6 +47,10 @@ class Image(models.Model):
                                          blank=True)
 
     location_name = models.ForeignKey(to=Location, on_delete=models.CASCADE, verbose_name='Локация к которой привязано изображение')
+
+    location_number = models.IntegerField(verbose_name='Номер локации',
+                                          default=0)
+
     image = models.ImageField(verbose_name='Изображение для локации',
                               upload_to='images/',
                               blank=True)

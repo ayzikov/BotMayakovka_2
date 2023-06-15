@@ -11,3 +11,11 @@ class LocationSerializer(serializers.Serializer):
     audio_guide = serializers.FileField()
     additionally = serializers.CharField(max_length=9999)
     additionally_button = serializers.CharField(max_length=9999)
+
+
+class ImageSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=999)
+    image_description = serializers.CharField(max_length=999)
+    location_name = serializers.CharField(max_length=999)
+    location_number = serializers.IntegerField()
+    image = serializers.FileField(max_length=999)

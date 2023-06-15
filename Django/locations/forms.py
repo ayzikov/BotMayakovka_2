@@ -36,6 +36,7 @@ class ImageForm(forms.ModelForm):
         fields = ('id',
                   'name',
                   'location_name',
+                  'location_number',
                   'image_description',
                   'image')
 
