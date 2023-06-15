@@ -40,6 +40,5 @@ class ImageForm(forms.ModelForm):
                   'image')
 
         widgets = {
-            'name': forms.TextInput(),
             'image_description': forms.Textarea(attrs={'rows': 6, 'cols': 60})
         }
