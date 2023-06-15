@@ -36,10 +36,10 @@ class ImageForm(forms.ModelForm):
         fields = ('id',
                   'name',
                   'location_name',
+                  'location_number',
                   'image_description',
                   'image')
 
         widgets = {
-            'name': forms.TextInput(),
             'image_description': forms.Textarea(attrs={'rows': 6, 'cols': 60})
         }

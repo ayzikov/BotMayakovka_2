@@ -27,6 +27,7 @@ class ImageAdmin(admin.ModelAdmin):
     list_display = ('id',
                     'name',
                     'location_name',
+                    'location_number',
                     'image_description',
                     'image')
 

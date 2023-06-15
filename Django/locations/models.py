@@ -32,12 +32,25 @@ class Location(models.Model):
 
 # модель для изображения
 class Image(models.Model):
-    name = models.TextField(verbose_name='Название кнопки')
+    BUTTONS = [
+        ('Я на месте', 'Я на месте'),
+        ('Подробное описание', 'Подробное описание'),
+        ('Дополнительно', 'Дополнительно')
+    ]
+
+    name = models.CharField(verbose_name='Название кнопки',
+                            max_length=99,
+                            choices=BUTTONS,
+                            default='Я на месте')
 
     image_description = models.TextField(verbose_name='Описание изображения',
                                          blank=True)
 
     location_name = models.ForeignKey(to=Location, on_delete=models.CASCADE, verbose_name='Локация к которой привязано изображение')
+
+    location_number = models.IntegerField(verbose_name='Номер локации',
+                                          default=0)
+
     image = models.ImageField(verbose_name='Изображение для локации',
                               upload_to='images/',
                               blank=True)

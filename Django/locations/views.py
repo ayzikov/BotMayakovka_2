@@ -1,7 +1,7 @@
 import json
 
-from .models import Location
-from .serializers import LocationSerializer
+from .models import Location, Image
+from .serializers import LocationSerializer, ImageSerializer
 
 from django.shortcuts import render
 
@@ -24,6 +24,24 @@ class LocationView(APIView):
         # преобразование входящих данных
         location_number = get_dict_from_json(val='location_number', request=request)
 
+        # получение объекта локации из БД по ее номеру
         location_info = Location.objects.get(location_number=location_number)
 
+        # отправка JSON
         return Response(LocationSerializer(location_info).data)
+
+
+class ImagesView(APIView):
+    def get(self, request: Request):
+
+        # преобразование входящих данных
+        location_number = get_dict_from_json(val='location_number', request=request)
+
+        # получение объектов изображений из БД по номеру локации
+        images_info = Image.objects.filter(location_number=location_number)
+
+        # отправка JSON
+        try:
+            return Response(ImageSerializer(images_info, many=True).data)
+        except:
+            return Response(ImageSerializer(images_info).data)
