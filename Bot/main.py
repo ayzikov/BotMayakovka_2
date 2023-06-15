@@ -1,5 +1,5 @@
 # файлы проекта
-from handlers import comands_handler, main_menu_handler, navigation_handler, location_handler
+from handlers import comands_handlers, main_menu_handlers, navigation_handlers, location_handlers
 
 # отдельные импорты
 import logging
