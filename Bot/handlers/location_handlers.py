@@ -8,25 +8,25 @@ from aiogram import Router
 # роутер (сын диспетчера)
 router = Router()
 
-# обработка кнопки 'Прогуляться по городу'
+# обработка кнопки 'Подробное описание'
 @router.message(Text(text='Подробное описание'))
-async def walk_handler(message: Message):
+async def detailed_desc_handler(message: Message):
 
 
     await message.answer(text='Подробное описание')
 
 
-# обработка кнопки 'Прогуляться по городу'
+# обработка кнопки 'Аудиогид'
 @router.message(Text(text='Аудиогид'))
-async def walk_handler(message: Message):
+async def audioguid_handler(message: Message):
 
 
     await message.answer(text='Аудиогид')
 
 
-# обработка кнопки 'Прогуляться по городу'
+# обработка кнопки 'Дополнительно'
 @router.message(Text(text='Дополнительно'))
-async def walk_handler(message: Message):
+async def additionally_handler(message: Message):
 
 
     await message.answer(text='Дополнительно')

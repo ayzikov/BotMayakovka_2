@@ -14,7 +14,7 @@ router = Router()
 
 # обработка кнопки 'Я на месте'
 @router.message(Text(text='Я на месте'))
-async def walk_handler(message: Message):
+async def in_place_handler(message: Message):
     # получам клавиатуру
     markup = await location_keyboard()
 

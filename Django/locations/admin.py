@@ -2,6 +2,8 @@ from django.contrib import admin
 from .models import Location, Image
 from .forms import LocationForm, ImageForm
 
+
+# регистрация моделей в админке джанго
 @admin.register(Location)
 class LocationAdmin(admin.ModelAdmin):
     list_display = ('id',
