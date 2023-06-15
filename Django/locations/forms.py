@@ -1,5 +1,8 @@
 from .models import Location, Image
 from django import forms
+
+
+# формы для отображения полей в админ панели
 class LocationForm(forms.ModelForm):
     class Meta:
         model = Location
