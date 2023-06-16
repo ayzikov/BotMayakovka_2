@@ -28,10 +28,10 @@ bot = Bot(token)
 dp = Dispatcher(storage=storage)
 
 # регестрируем роутеры в боте
-dp.include_router(comands_handler.router)
-dp.include_router(main_menu_handler.router)
-dp.include_router(navigation_handler.router)
-dp.include_router(location_handler.router)
+dp.include_router(comands_handlers.router)
+dp.include_router(main_menu_handlers.router)
+dp.include_router(navigation_handlers.router)
+dp.include_router(location_handlers.router)
 
 # вывод логов в консоль
 logging.basicConfig(level=logging.INFO)

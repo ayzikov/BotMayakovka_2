@@ -21,7 +21,7 @@ async def location_keyboard():
              KeyboardButton(text='Дальше')],
 
             [KeyboardButton(text='Назад')],
-             [KeyboardButton(text='Завершить прогулку')]
+            [KeyboardButton(text='Завершить прогулку')]
         ],
         resize_keyboard=True)
 
