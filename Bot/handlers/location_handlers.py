@@ -1,4 +1,8 @@
 # отдельные импорты
+import pathlib
+
+# файлы проекта
+from BotMayakovka_2.Bot.other.additional_functions import parsing_images
 
 
 # импорты aiogram
@@ -7,6 +11,7 @@ from aiogram.types import Message
 from aiogram import Router
 from aiogram import F
 from aiogram.fsm.context import FSMContext
+from aiogram.types import FSInputFile
 
 
 
@@ -20,6 +25,23 @@ async def detailed_desc_handler(message: Message, state: FSMContext):
     data = await state.get_data()
 
     # получаем изображения
+    images_info = data['images_info']
+
+    # изображения для вывода в чат
+    # список с кортежами путей изображений и их описанием
+    images_tuple = await parsing_images(images_info, 'Подробное описание')
+
+    # перебираем циклом инфо о изображениях, делаем из них FSInputFile-объекты и выводим в чат
+    for image_tuple in images_tuple:
+        # получаем полный путь к изображению
+        current_path = str(pathlib.Path(__file__).resolve().parents[2])
+        image_path = pathlib.Path(current_path, 'Django', *image_tuple[0].split('/'))
+        image = FSInputFile(image_path)
+
+        # получаем описание изображения
+        image_description = image_tuple[1]
+
+        await message.answer_photo(photo=image, caption=image_description)
 
 
     # получаем подробное описание локации
