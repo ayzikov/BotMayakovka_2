@@ -9,14 +9,15 @@ class LocationAdmin(admin.ModelAdmin):
     list_display = ('id',
                     'location_name',
                     'location_number',
-                    'location_latitude',
-                    'location_longitude',
+                    'next_location_latitude',
+                    'next_location_longitude',
                     'main_text',
                     'detailed_description',
                     'audio_guide_text',
                     'audio_guide',
                     'additionally',
-                    'additionally_button')
+                    'additionally_button',
+                    'next_button_text')
 
 
     form = LocationForm
