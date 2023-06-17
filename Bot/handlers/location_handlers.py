@@ -3,7 +3,7 @@ import pathlib
 from urllib.parse import unquote
 
 # файлы проекта
-from BotMayakovka_2.Bot.other.additional_functions import parsing_images
+from other.additional_functions import parsing_images
 
 
 # импорты aiogram

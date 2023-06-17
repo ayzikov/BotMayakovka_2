@@ -2,10 +2,10 @@
 import pathlib
 
 # файлы проекта
-from BotMayakovka_2.Bot.keyboards.menu_for_location_keyboard import location_keyboard
-from BotMayakovka_2.Bot.keyboards.second_lvl_keyboards import walk_keyboard
-from BotMayakovka_2.Bot.crud.all_location_info import get_location_info_by_number, get_images_location_info_by_number
-from BotMayakovka_2.Bot.other.additional_functions import parsing_images
+from keyboards.menu_for_location_keyboard import location_keyboard
+from keyboards.second_lvl_keyboards import walk_keyboard
+from crud.all_location_info import get_location_info_by_number, get_images_location_info_by_number
+from other.additional_functions import parsing_images
 
 # импорты aiogram
 from aiogram.filters import Text
