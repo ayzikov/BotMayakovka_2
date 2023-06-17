@@ -41,14 +41,15 @@ async def in_place_handler(message: Message, state: FSMContext):
     # парсим и записываем информацию о локации в ФСМ состояние
     await state.update_data(
         location_name=location_info['location_name'],
-        location_latitude=location_info['location_latitude'],
-        location_longitude=location_info['location_longitude'],
+        next_location_latitude=location_info['next_location_latitude'],
+        next_location_longitude=location_info['next_location_longitude'],
         main_text=location_info['main_text'],
         detailed_description=location_info['detailed_description'],
         audio_guide_text=location_info['audio_guide_text'],
         audio_guide=location_info['audio_guide'],
         additionally=location_info['additionally'],
-        additionally_button=location_info['additionally_button']
+        additionally_button=location_info['additionally_button'],
+        next_button_text=location_info['next_button_text']
     )
 
     # записываем в состояние список словарей с информацией о фотографиях
@@ -72,8 +73,10 @@ async def in_place_handler(message: Message, state: FSMContext):
         # получаем описание изображения
         image_description = image_tuple[1]
 
-        await message.answer_photo(photo=image, caption=image_description)
-
+        try:
+            await message.answer_photo(photo=image, caption=image_description)
+        except:
+            pass
 
     # получам клавиатуру
     markup = await location_keyboard(location_info['additionally_button'])
@@ -86,8 +89,20 @@ async def in_place_handler(message: Message, state: FSMContext):
 
 # обработка кнопки 'Дальше'
 @router.message(Text(text='Дальше'))
-async def next_location_handler(message: Message):
+async def next_location_handler(message: Message, state: FSMContext):
+
+    # получаем данные из состояния
+    data = await state.get_data()
+
+    # текст выводимый при нажатии на кнопку
+    text = data['next_button_text']
+
+    # широта и долгода следующей локации
+    next_location_latitude = data['next_location_latitude']
+    next_location_longitude = data['next_location_longitude']
+
     # получам клавиатуру
     markup = await walk_keyboard()
 
-    await message.answer(text='Дальше', reply_markup=markup)
+    await message.answer(text=text, reply_markup=markup)
+    await message.answer_location(latitude=next_location_latitude, longitude=next_location_longitude)

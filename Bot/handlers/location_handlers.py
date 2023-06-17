@@ -42,7 +42,10 @@ async def detailed_desc_handler(message: Message, state: FSMContext):
         # получаем описание изображения
         image_description = image_tuple[1]
 
-        await message.answer_photo(photo=image, caption=image_description)
+        try:
+            await message.answer_photo(photo=image, caption=image_description)
+        except:
+            pass
 
 
     # получаем подробное описание локации
@@ -63,12 +66,12 @@ async def audioguid_handler(message: Message, state: FSMContext):
     audio_path = pathlib.Path(current_path, 'Django', *unquote(data['audio_guide']).split('/'))
     audio = FSInputFile(audio_path)
 
-    await message.answer_audio(audio)
+    await message.answer_voice(audio)
 
 
 
 # обработка кнопки 'Дополнительно'
-@router.message(F.text.in_({'Софья Шамардина'}))
+@router.message(F.text.in_({'Софья Шамардина', 'Кое-что про Петербург'}))
 async def additionally_handler(message: Message, state: FSMContext):
     # получаем данные из состояния
     data = await state.get_data()
@@ -90,10 +93,13 @@ async def additionally_handler(message: Message, state: FSMContext):
         # получаем описание изображения
         image_description = image_tuple[1]
 
-        await message.answer_photo(photo=image, caption=image_description)
+        try:
+            await message.answer_photo(photo=image, caption=image_description)
+        except:
+            pass
 
-        # получаем подробное описание локации
-        text = data['additionally']
+    # получаем подробное описание локации
+    text = data['additionally']
 
     await message.answer(text=text)
 

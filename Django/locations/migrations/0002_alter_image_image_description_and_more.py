@@ -17,12 +17,12 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='location',
-            name='location_latitude',
+            name='next_location_latitude',
             field=models.FloatField(verbose_name='Широта локации'),
         ),
         migrations.AlterField(
             model_name='location',
-            name='location_longitude',
+            name='next_location_longitude',
             field=models.FloatField(verbose_name='Долгота локации'),
         ),
         migrations.AlterField(
