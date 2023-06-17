@@ -76,7 +76,7 @@ async def in_place_handler(message: Message, state: FSMContext):
 
 
     # получам клавиатуру
-    markup = await location_keyboard()
+    markup = await location_keyboard(location_info['additionally_button'])
 
     # текст для вывода в чат
     text = location_info['main_text']
