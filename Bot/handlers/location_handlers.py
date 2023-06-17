@@ -63,7 +63,7 @@ async def audioguid_handler(message: Message, state: FSMContext):
     audio_path = pathlib.Path(current_path, 'Django', *unquote(data['audio_guide']).split('/'))
     audio = FSInputFile(audio_path)
 
-    await message.answer_audio(audio)
+    await message.answer_voice(audio)
 
 
 

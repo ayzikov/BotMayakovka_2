@@ -87,6 +87,8 @@ async def in_place_handler(message: Message, state: FSMContext):
 # обработка кнопки 'Дальше'
 @router.message(Text(text='Дальше'))
 async def next_location_handler(message: Message):
+
+
     # получам клавиатуру
     markup = await walk_keyboard()
 
