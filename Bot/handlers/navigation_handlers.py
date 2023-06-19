@@ -2,7 +2,7 @@
 import pathlib
 
 # файлы проекта
-from keyboards.menu_for_location_keyboard import location_keyboard
+from keyboards.menu_for_location_keyboard import location_keyboard, location_keyboard_without_next_button
 from keyboards.second_lvl_keyboards import walk_keyboard
 from crud.all_location_info import get_location_info_by_number, get_images_location_info_by_number
 from other.additional_functions import parsing_images
@@ -78,11 +78,18 @@ async def in_place_handler(message: Message, state: FSMContext):
         except:
             pass
 
-    # получам клавиатуру
-    markup = await location_keyboard(location_info['additionally_button'])
 
     # текст для вывода в чат
     text = location_info['main_text']
+
+    # проверяем последняя ли это локация
+    # если последняя, то возвращаем клавиатуру без кнопки "Дальше"
+    if location_number == 13:
+        markup = await location_keyboard_without_next_button(location_info['additionally_button'])
+
+    # если нет - то обычную
+    else:
+        markup = await location_keyboard(location_info['additionally_button'])
 
     await message.answer(text=text, reply_markup=markup)
 
