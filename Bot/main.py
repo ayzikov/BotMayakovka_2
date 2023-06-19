@@ -1,5 +1,5 @@
 # файлы проекта
-from handlers import comands_handlers, main_menu_handlers, navigation_handlers, location_handlers
+from handlers import comands_handlers, main_menu_handlers, navigation_handlers, location_handlers, admin_handlers
 
 # отдельные импорты
 import logging
@@ -32,6 +32,7 @@ dp.include_router(comands_handlers.router)
 dp.include_router(main_menu_handlers.router)
 dp.include_router(navigation_handlers.router)
 dp.include_router(location_handlers.router)
+dp.include_router(admin_handlers.router)
 
 # вывод логов в консоль
 logging.basicConfig(level=logging.INFO)
