@@ -80,7 +80,7 @@ async def audioguid_handler(message: Message, state: FSMContext):
                             'Книги ИМО',
                             'Еще Петербург',
                             'Вам!',
-                            'Ешь ананасы….'}))
+                            'Ешь ананасы...'}))
 async def additionally_handler(message: Message, state: FSMContext):
     # получаем данные из состояния
     data = await state.get_data()
