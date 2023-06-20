@@ -17,7 +17,8 @@ async def welcome_handler(message: Message):
     # получам клавиатуру
     markup = await main_menu_keyboard()
 
-    await message.answer(text='Приветствие', reply_markup=markup)
+    await message.answer(text='В 1912 году девятнадцатилетний Владимир Маяковский впервые приехал в Санкт-Петербург. ',
+                         reply_markup=markup)
 
 
 # обработка команды /menu ,кнопок 'Главное меню' и 'Завершить прогулку'
