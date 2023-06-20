@@ -71,7 +71,16 @@ async def audioguid_handler(message: Message, state: FSMContext):
 
 
 # обработка кнопки 'Дополнительно'
-@router.message(F.text.in_({'Софья Шамардина', 'Кое-что про Петербург'}))
+@router.message(F.text.in_({'Софья Шамардина',
+                            'Кое-что про Петербург',
+                            'Судья', 'Пришедший сам',
+                            'Ёлка футуристов',
+                            'Лиличка!',
+                            'Желтая кофта',
+                            'Книги ИМО',
+                            'Еще Петербург',
+                            'Вам!',
+                            'Ешь ананасы….'}))
 async def additionally_handler(message: Message, state: FSMContext):
     # получаем данные из состояния
     data = await state.get_data()
