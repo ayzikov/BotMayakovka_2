@@ -6,8 +6,8 @@ from django.db import models
 class Location(models.Model):
     location_name = models.TextField(verbose_name='Название локации')
     location_number = models.IntegerField(verbose_name='Номер локации')
-    next_location_latitude = models.FloatField(verbose_name='Широта локации')
-    next_location_longitude = models.FloatField(verbose_name='Долгота локации')
+    next_location_latitude = models.FloatField(verbose_name='Широта следующей локации')
+    next_location_longitude = models.FloatField(verbose_name='Долгота следующей локации')
     main_text = models.TextField(verbose_name='Главное описание локации')
     detailed_description = models.TextField(verbose_name='Подробное описание локации')
 

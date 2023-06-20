@@ -20,7 +20,23 @@ async def location_keyboard(additionally_button: str):
             [KeyboardButton(text=additionally_button),
              KeyboardButton(text='Дальше')],
 
-            [KeyboardButton(text='Назад')],
+            [KeyboardButton(text='Завершить прогулку')]
+        ],
+        resize_keyboard=True)
+
+    return markup
+
+
+async def location_keyboard_without_next_button(additionally_button: str):
+    '''
+    Клавиатура для последней локации
+    :return: markup
+    '''
+    markup = ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text='Подробное описание'),
+            KeyboardButton(text='Аудиогид')],
+
             [KeyboardButton(text='Завершить прогулку')]
         ],
         resize_keyboard=True)

@@ -14,7 +14,6 @@ router = Router()
 
 # обработка кнопки 'Прогуляться по городу'
 @router.message(Text(text='Прогуляться по городу'))
-@router.message(Text(text='Назад'))
 async def walk_handler(message: Message, state: FSMContext):
 
     # записываем в ФСМ состояние что пользователь сейчас находится на нулевой локации
