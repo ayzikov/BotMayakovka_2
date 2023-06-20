@@ -4,6 +4,7 @@ import pathlib
 # файлы проекта
 from keyboards.menu_for_location_keyboard import location_keyboard, location_keyboard_without_next_button
 from keyboards.second_lvl_keyboards import walk_keyboard
+from keyboards.fifth_location_keyboard import fifth_location_keyboard
 from crud.all_location_info import get_location_info_by_number, get_images_location_info_by_number
 from other.additional_functions import parsing_images
 
@@ -86,6 +87,10 @@ async def in_place_handler(message: Message, state: FSMContext):
     # если последняя, то возвращаем клавиатуру без кнопки "Дальше"
     if location_number == 13:
         markup = await location_keyboard_without_next_button(location_info['additionally_button'])
+
+    # если это 5 локация - возвращаем клавиатуру специально для нее
+    elif location_number == 5:
+        markup = await fifth_location_keyboard()
 
     # если нет - то обычную
     else:
