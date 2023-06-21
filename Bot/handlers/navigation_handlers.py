@@ -6,6 +6,7 @@ from keyboards.menu_for_location_keyboard import location_keyboard, location_key
 from keyboards.second_lvl_keyboards import walk_keyboard
 from keyboards.fifth_location_keyboard import fifth_location_keyboard
 from crud.all_location_info import get_location_info_by_number, get_images_location_info_by_number
+from crud.add_action import add_action
 from other.additional_functions import parsing_images
 
 # импорты aiogram
@@ -97,6 +98,11 @@ async def in_place_handler(message: Message, state: FSMContext):
         markup = await location_keyboard(location_info['additionally_button'])
 
     await message.answer(text=text, reply_markup=markup)
+
+    # добавляем действие в БД
+    await add_action(user_tg_id=message.from_user.id,
+                     msg_name='Я на месте',
+                     location_number=location_number)
 
 
 # обработка кнопки 'Дальше'

@@ -1,5 +1,6 @@
 # файлы проекта
 from keyboards.main_menu_keyboard import main_menu_keyboard
+from crud.add_user import add_user
 
 # импорты aiogram
 from aiogram.filters import Command, Text
@@ -19,6 +20,23 @@ async def welcome_handler(message: Message):
 
     await message.answer(text='В 1912 году девятнадцатилетний Владимир Маяковский впервые приехал в Санкт-Петербург. ',
                          reply_markup=markup)
+
+    # добавляем пользователя в БД
+    user_tg_id = message.from_user.id
+    try:
+        full_name = message.from_user.full_name
+    except:
+        full_name = ''
+
+    try:
+        username = message.from_user.username
+    except:
+        username = ''
+
+
+    await add_user(user_tg_id=user_tg_id,
+                   full_name=full_name,
+                   username=username)
 
 
 # обработка команды /menu ,кнопок 'Главное меню' и 'Завершить прогулку'
