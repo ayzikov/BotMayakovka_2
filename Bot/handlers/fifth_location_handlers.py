@@ -1,3 +1,5 @@
+from crud.add_action import add_action
+
 # импорты aiogram
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message
@@ -18,6 +20,11 @@ async def go_to_the_exhibition(message: Message, state: FSMContext):
 
     await message.answer(text=text)
 
+    # добавляем действие в БД
+    await add_action(user_tg_id=message.from_user.id,
+                     msg_name='Сходить на выставку',
+                     location_number=data['location_number'])
+
 
 @router.message(F.text == 'НАТЕ!')
 async def hate_button(message: Message, state: FSMContext):
@@ -27,4 +34,9 @@ async def hate_button(message: Message, state: FSMContext):
     text = data['additionally']
 
     await message.answer(text=text)
+
+    # добавляем действие в БД
+    await add_action(user_tg_id=message.from_user.id,
+                     msg_name='НАТЕ!',
+                     location_number=data['location_number'])
 

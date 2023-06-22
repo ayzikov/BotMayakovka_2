@@ -3,7 +3,6 @@ import json
 
 # импорты aiogram
 from aiohttp import ClientSession
-from aiogram.types import FSInputFile
 
 
 

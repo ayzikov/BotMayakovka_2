@@ -4,6 +4,7 @@ from urllib.parse import unquote
 
 # файлы проекта
 from other.additional_functions import parsing_images
+from crud.add_action import add_action
 
 
 # импорты aiogram
@@ -53,6 +54,11 @@ async def detailed_desc_handler(message: Message, state: FSMContext):
 
     await message.answer(text=text)
 
+    # добавляем действие в БД
+    await add_action(user_tg_id=message.from_user.id,
+                     msg_name='Подробное описание',
+                     location_number=data['location_number'])
+
 
 # обработка кнопки 'Аудиогид'
 @router.message(Text(text='Аудиогид'))
@@ -68,6 +74,11 @@ async def audioguid_handler(message: Message, state: FSMContext):
 
     await message.answer_voice(audio)
 
+    # добавляем действие в БД
+    await add_action(user_tg_id=message.from_user.id,
+                     msg_name='Аудиогид',
+                     location_number=data['location_number'])
+
 
 
 # обработка кнопки 'Дополнительно'
@@ -82,6 +93,8 @@ async def audioguid_handler(message: Message, state: FSMContext):
                             'Вам!',
                             'Ешь ананасы...'}))
 async def additionally_handler(message: Message, state: FSMContext):
+    # кнопка "Дополнительно"
+
     # получаем данные из состояния
     data = await state.get_data()
 
@@ -111,5 +124,10 @@ async def additionally_handler(message: Message, state: FSMContext):
     text = data['additionally']
 
     await message.answer(text=text)
+
+    # добавляем действие в БД
+    await add_action(user_tg_id=message.from_user.id,
+                     msg_name='Дополнительно',
+                     location_number=data['location_number'])
 
 
