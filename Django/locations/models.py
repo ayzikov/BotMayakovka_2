@@ -69,8 +69,8 @@ class Image(models.Model):
 
 class User(models.Model):
     user_tg_id = models.IntegerField(verbose_name='id пользователя в телеграме')
-    full_name = models.TextField(verbose_name='Имя пользователя при наличии', default='')
-    username = models.TextField(verbose_name='Юзернейм пользователя при наличии', default='')
+    full_name = models.TextField(verbose_name='Имя пользователя при наличии', blank=True, null=True)
+    username = models.TextField(verbose_name='Юзернейм пользователя при наличии', blank=True, null=True)
     reg_time = models.DateTimeField(verbose_name='Дата регистрации пользователя')
     last_time = models.DateTimeField(verbose_name='Дата последнего действия пользователя')
     counter_locations = models.IntegerField(verbose_name='Количество пройденных локаций', default=0)
