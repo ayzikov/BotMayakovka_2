@@ -33,7 +33,7 @@ async def walk_handler(message: Message, state: FSMContext):
     \n\nНачало маршрута: улица Пушкинская, дом 20"
 
     await message.answer(text=text, reply_markup=markup)
-    await message.answer_location(latitude=59.937607, longitude=30.348447)
+    await message.answer_location(latitude=59.926967, longitude=30.355875)
 
     # добавляем действие в БД
     await add_action(user_tg_id=message.from_user.id,

@@ -10,8 +10,8 @@ async def fifth_location_keyboard():
     '''
     markup = ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text='Сходить на выставку'),
-            KeyboardButton(text='НАТЕ!')],
+            [KeyboardButton(text='Осмотреть двор'),
+            KeyboardButton(text='Юбилеить')],
 
             [KeyboardButton(text='Дальше')],
 

@@ -120,10 +120,10 @@ async def additionally_handler(message: Message, state: FSMContext):
         except:
             pass
 
-    # получаем подробное описание локации
+    # получаем дополнительный текст локации
     text = data['additionally']
 
-    await message.answer(text=text)
+    await message.answer(text=text, parse_mode="HTML")
 
     # добавляем действие в БД
     await add_action(user_tg_id=message.from_user.id,
