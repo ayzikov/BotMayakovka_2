@@ -11,7 +11,7 @@ from aiogram import F
 
 router = Router()
 
-@router.message(F.text == 'Сходить на выставку')
+@router.message(F.text == 'Осмотреть двор')
 async def go_to_the_exhibition(message: Message, state: FSMContext):
     # получаем данные из состояния
     data = await state.get_data()
@@ -22,11 +22,11 @@ async def go_to_the_exhibition(message: Message, state: FSMContext):
 
     # добавляем действие в БД
     await add_action(user_tg_id=message.from_user.id,
-                     msg_name='Сходить на выставку',
+                     msg_name='Осмотреть двор',
                      location_number=data['location_number'])
 
 
-@router.message(F.text == 'НАТЕ!')
+@router.message(F.text == 'Юбилеить')
 async def hate_button(message: Message, state: FSMContext):
     # получаем данные из состояния
     data = await state.get_data()
@@ -37,6 +37,6 @@ async def hate_button(message: Message, state: FSMContext):
 
     # добавляем действие в БД
     await add_action(user_tg_id=message.from_user.id,
-                     msg_name='НАТЕ!',
+                     msg_name='Юбилеить',
                      location_number=data['location_number'])
 
