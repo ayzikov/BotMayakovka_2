@@ -3,6 +3,7 @@ from keyboards.main_menu_keyboard import main_menu_keyboard
 from crud.add_user import add_user
 
 # импорты aiogram
+from aiogram.fsm.context import FSMContext
 from aiogram.filters import Command, Text
 from aiogram.types import Message
 from aiogram import Router
@@ -44,8 +45,16 @@ async def welcome_handler(message: Message):
 @router.message(Command(commands=['menu']))
 @router.message(Text(text='Главное меню'))
 @router.message(Text(text='Завершить прогулку'))
-async def main_menu_handler(message: Message):
+async def main_menu_handler(message: Message, state: FSMContext):
     # получам клавиатуру
     markup = await main_menu_keyboard()
 
-    await message.answer(text='Главное меню', reply_markup=markup)
+    # выводим текст в зависимости от локации
+    location_number = await state.get_data()['location_number']
+    if location_number == 13:
+        text = 'Наша прогулка подошла к концу! Надеемся, что вам понравилось!'
+    else:
+        text = 'Главное меню'
+
+
+    await message.answer(text=text, reply_markup=markup)
