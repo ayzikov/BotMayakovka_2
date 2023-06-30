@@ -24,6 +24,10 @@ async def go_to_the_exhibition(message: Message, state: FSMContext):
 
     text = data['detailed_description']
 
+    # геолокация двора
+    await message.answer_location(latitude=59.932114, longitude=30.343957)
+
+    # сообщение
     await message.answer(text=text)
 
     # добавляем действие в БД
