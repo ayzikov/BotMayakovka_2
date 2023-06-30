@@ -42,19 +42,31 @@ async def welcome_handler(message: Message):
 
 
 # обработка команды /menu ,кнопок 'Главное меню' и 'Завершить прогулку'
-@router.message(Command(commands=['menu']))
-@router.message(Text(text='Главное меню'))
 @router.message(Text(text='Завершить прогулку'))
 async def main_menu_handler(message: Message, state: FSMContext):
     # получам клавиатуру
     markup = await main_menu_keyboard()
 
     # выводим текст в зависимости от локации
-    location_number = await state.get_data()['location_number']
+    data = await state.get_data()
+    print(data)
+    location_number = data['location_number']
     if location_number == 13:
         text = 'Наша прогулка подошла к концу! Надеемся, что вам понравилось!'
     else:
         text = 'Главное меню'
 
+
+    await message.answer(text=text, reply_markup=markup)
+
+
+# обработка команды /menu и кнопки 'Главное меню'
+@router.message(Command(commands=['menu']))
+@router.message(Text(text='Главное меню'))
+async def main_menu_handler(message: Message):
+    # получам клавиатуру
+    markup = await main_menu_keyboard()
+
+    text = 'Главное меню'
 
     await message.answer(text=text, reply_markup=markup)
