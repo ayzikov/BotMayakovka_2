@@ -13,8 +13,10 @@ from aiogram import Router
 # роутер (сын диспетчера)
 router = Router()
 
-# обработка команды /start
+# обработка команды /start, menu и "Главное меню"
 @router.message(Command(commands=['start']))
+@router.message(Command(commands=['menu']))
+@router.message(Text(text='Главное меню'))
 async def welcome_handler(message: Message):
     # получам клавиатуру
     markup = await main_menu_keyboard()
@@ -59,14 +61,3 @@ async def main_menu_handler(message: Message, state: FSMContext):
 
     await message.answer(text=text, reply_markup=markup)
 
-
-# обработка команды /menu и кнопки 'Главное меню'
-@router.message(Command(commands=['menu']))
-@router.message(Text(text='Главное меню'))
-async def main_menu_handler(message: Message):
-    # получам клавиатуру
-    markup = await main_menu_keyboard()
-
-    text = 'Главное меню'
-
-    await message.answer(text=text, reply_markup=markup)
